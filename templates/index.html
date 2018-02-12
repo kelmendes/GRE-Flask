@@ -1,0 +1,86 @@
+{%  extends  "bootstrap/base.html"  %}
+{% block content %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+	<!-- COR Barra Mobile -->
+	<!-- Chrome, Firefox OS, Opera and Vivaldi -->
+	<meta name="theme-color" content="#000000">
+	<!-- Windows Phone -->
+	<meta name="msapplication-navbutton-color" content="#000000">
+	<!-- iOS Safari -->
+	<meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+
+
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta name="viewport" content="width=device-width, initialscale=1.0">
+
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+	<title>So LGP</title>
+</head>
+
+<body>
+	<!-- Menu -->
+	<div class="navbar navbar-inverse navbar-static-top">
+		<div class="container">
+			<a href="#" class="navbar-brand"> Home</a>
+			<button class="navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div class="collapse navbar-collapse navHeaderCollapse">
+
+			</div>
+
+
+		</div>
+	</div>
+	<!-- Inicio Container  -->
+	<div class="container">
+		<div class="jumbotron">
+			<h1>Login</h1>
+			<hr />
+			<div class="container">
+				<form class="form-signin" action='/' method='POST'>
+					<label for="inputEmail" class="sr-only">Email address</label>
+					<input type='text' name='email' id='email' placeholder='email' class="form-control"></input>
+				</br>
+				<label for="inputPassword" class="sr-only">Password</label>
+				<input type='password' name='pw' id='pw' placeholder='password' 	class="form-control"></input>
+				<div class="checkbox">
+					<label>
+						<input type="checkbox" value="remember-me"> Remember me</input>
+					</label>
+				</div>
+				<input class="btn btn-lg btn-primary btn-block"type='submit' name='submit'></input>
+			</form>
+		</div>
+	</div>
+</div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="js/bootstrap.js"></script>
+</body>
+</html>
+
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+{% endblock %}

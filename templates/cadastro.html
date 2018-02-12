@@ -1,0 +1,352 @@
+{%  extends  "bootstrap/base.html"  %}
+{% block content %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+<!-- COR Barra Mobile -->
+<!-- Chrome, Firefox OS, Opera and Vivaldi -->
+<meta name="theme-color" content="#000000">
+<!-- Windows Phone -->
+<meta name="msapplication-navbutton-color" content="#000000">
+<!-- iOS Safari -->
+<meta name="apple-mobile-web-app-status-bar-style" content="#000000">
+
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+<title>So LGP</title>
+<style>
+    .navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+</style>
+</head>
+
+<body>
+		<!-- Menu -->
+	<div class="navbar navbar-inverse navbar-static-top">
+		<div class="container">
+				<a href="#" class="navbar-brand"> Home</a>
+				<button class="navbar-toggle" data-toggle = "collapse" data-target = ".navHeaderCollapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<div class="collapse navbar-collapse navHeaderCollapse">
+					<ul class="nav navbar-nav navbar-right">
+						<li ><a href="{{ url_for('index')}}"> Home</a></li>
+						{% if session['root'] == 'NAO' %}
+                            <li ><a href="{{ url_for('cadastrar')}}"> Formulario</a></li>
+                            <li ><a href="{{ url_for('lista')}}"> Solicitações</a></li>
+                        {% endif %}
+                        
+						{% if session['root'] == 'SIM' %}
+                            <li ><a href="{{ url_for('root')}}"> Administração</a></li>
+                        {% endif %}
+
+						<ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span> 
+                            <strong>{{session['login']}}</strong>
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="navbar-login">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p class="text-center">
+                                                <span class="glyphicon glyphicon-user icon-size"></span>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <p class="text-left"><strong>{{session['login']}}</strong></p>
+                                            <p class="text-left small">{{session['email']}}</p>
+                                            <p class="text-left">
+                                                <a href="#" class="btn btn-primary btn-block btn-sm">Atualizar Dados</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="divider"></li>
+                            <li>
+                                <div class="navbar-login navbar-login-session">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <p>
+                                                <a href="{{ url_for('logout')}}" class="btn btn-danger btn-block">Sair</a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+
+
+
+					</ul>
+				</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="jumbotron jumbotron-fluid col-md-15">
+			<h1>Requerimento - Aluno(a) </h1>
+	    <hr>
+	    	<div class = "col-md-15 jumbotron jumbotron-fluid ">
+				<form action="{{ url_for('cadastro')}}" method="POST">
+					<table  class="table" class="table table-striped">
+						<thead class="thead-default">
+							<tr>
+								<th> CAMPUS *</th>
+								<th COLSPAN = '2'> NOME DO(A) ALUNO(A) *</th>
+								<th> Nº DE MATRICULA *</th>
+								<th> E-mail *	</th>
+							</tr>
+						</thead>
+						<tr>
+							<td>
+    							<select name="campus" class = "form-control">
+                                  <option value="Palmares">Palmares</option>
+                                </select>
+                            </td>
+							<td COLSPAN = '2'><input size='45' type="text" name='nome'  class = "form-control"></td>
+							<td><input type="text" name='matricula'  class = "form-control" value={{session['login']}}></td>
+							<td><input type="text" name='email'  class = "form-control"></td>
+						</tr>
+						<thead class="thead-default">
+						<tr>
+							<th> PERIODO *</th>
+							<th COLSPAN = '2'> CURSO *</th>
+							<th> TURNO *</th>
+							<th> ENDERECO / TELEFONE *</th>
+						</tr>
+					</thead>
+						<tr>
+							<td>
+							    <select name='periodo' class = "form-control">
+							        <option value="Opção não selecionada pelo usuário"> Selecione opção</option>
+							        <option value="1º Periodo">1º</option>
+							        <option value="2º Periodo">2º</option>
+							        <option value="3º Periodo">3º</option>
+							        <option value="Egresso">Egresso</option>
+
+							    </select>
+							</td>
+							<td COLSPAN = '2'>
+							    <select name="curso" class = "form-control">
+							        <option value="Opção não selecionada pelo usuário"> Selecione opção</option>
+							        <option value=" Manutenção e Suporte em Informática " > Manutenção e Suporte em Informática  </option>
+							        <option value="Redes de Computadores" > Redes de Computadores </option>
+							    </select>
+							</td>
+							<td>
+							    <select name="turno" class = "form-control">
+							        <option value="Opção não selecionada pelo usuário"> Selecione opção</option>
+							        <option value="Matutuino" > Matutuino </option>
+							        <option value="Vespertino"> Vespertino </option>
+							        <option value="Noturno" > Noturno </option>
+							    </select>
+							</td>
+							<td><input type="text" name='telefone'  class = "form-control"></td>
+						</tr>
+						<thead class="thead-default">
+						<tr>
+							<th COLSPAN = '2'> CPF * </th>
+							<th> IDENTIDADE * </th>
+							<th>ORGAO EXPED. *</th>
+							<th > ESTADO *</th>
+						</tr>
+						</thead>
+						<tr>
+							<td COLSPAN = '2'><input type="text" name='cpf'  class = "form-control"></td>
+							<td><input type="text" name='identidade'  class = "form-control"></td>
+							<td>
+							    <select name="orgaoexpedidor" class = "form-control">
+							        <option value="Opção não selecionada pelo usuário"> Selecione opção</option>
+							        <option value="SDS" > SDS </option>
+							    </select>
+							</td>
+							<td>
+							    <select name="estadomunucipio" class = "form-control">
+							        <option value="Opção não selecionada pelo usuário"> Selecione opção</option>
+									<option value="ac">Acre</option> 
+									<option value="al">Alagoas</option> 
+									<option value="am">Amazonas</option> 
+									<option value="ap">Amapá</option> 
+									<option value="ba">Bahia</option> 
+									<option value="ce">Ceará</option> 
+									<option value="df">Distrito Federal</option> 
+									<option value="es">Espírito Santo</option> 
+									<option value="go">Goiás</option> 
+									<option value="ma">Maranhão</option> 
+									<option value="mt">Mato Grosso</option> 
+									<option value="ms">Mato Grosso do Sul</option> 
+									<option value="mg">Minas Gerais</option> 
+									<option value="pa">Pará</option> 
+									<option value="pb">Paraíba</option> 
+									<option value="pr">Paraná</option> 
+									<option value="pe">Pernambuco</option> 
+									<option value="pi">Piauí</option> 
+									<option value="rj">Rio de Janeiro</option> 
+									<option value="rn">Rio Grande do Norte</option> 
+									<option value="ro">Rondônia</option> 
+									<option value="rs">Rio Grande do Sul</option> 
+									<option value="rr">Roraima</option> 
+									<option value="sc">Santa Catarina</option> 
+									<option value="se">Sergipe</option> 
+									<option value="sp">São Paulo</option> 
+									<option value="to">Tocantins</option> 
+							    </select>
+							</td>
+						</tr>
+						<thead class="thead-default">
+						<tr>
+							<th COLSPAN = '5' > MARQUE A OPCAO DESEJADA   </th>
+						</tr>
+						<tr>
+						    <td COLSPAN = '5'>
+						        <select name="iten" class = "form-control">
+						          <option value="Opção não selecionada pelo usuário"> Selecione opção</option>
+                                  <option value="Renovacao de Matricula">Renovacao de Matricula </option>
+                                  <option value="Justificativa de falta">Justificativa de falta - especifique a data que faltou a aula (a,d,i)</option>
+                                  <option value="Prova 2º chamada">Prova 2º chamada  </option>
+                                  <option value="Cancelamento de Matricula">Cancelamento de Matricula </option>
+                                  <option value=" Cancelamento de Disciplina"> Cancelamento de Disciplina (especifique) </option>
+                                  <option value="Declaração de Aluno">Declaração de Aluno</option>
+                                  <option value="Histórico Escolar">Histórico Escolar - Semestre (  )</option>
+                                  <option value="Reabertura de Matricula ">Reabertura de Matricula  </option>
+                                  <option value="Trancamento de Matrícula">Trancamento de Matrícula </option>
+                                  <option value="Declaração de Colação de Grau e Tramitação de Diploma">Declaração de Colação de Grau e Tramitação de Diploma </option>
+                                  <option value="Isenção de disciplina cursadas">Isenção de disciplina cursadas (anexos) </option>
+                                  <option value="Pagar disciplina cursadas">Pagar disciplina cursadas (anexos) </option>
+                                  <option value="Declaração para Estágio">Declaração para Estágio - Conclusão Ano( ) Semestre( )</option>
+                                  <option value="Diploma">Diploma 1ªVia( ) 2ª( )- Conclusão Ano( ) Semestre( )</option>
+                                  <option value="Admissão por Transferência e Análise Curricular">Admissão por Transferência e Análise Curricular(Anexos) </option>
+                                  <option value="Ementa de disciplina">Ementa de disciplina - (especifique)</option>
+                                  <option value="Reitegração para Cursar">Reitegração para Cursar (Solicitar no Protocolo Geral)</option>
+                                  <option value="Tranferência de Turno">Tranferência de Turno (especifique turno)</option>
+                                  <option value="Guia de Transferência">Guia de Transferência </option>
+                                  <option value="Outros">Outros</option>
+                                </select>
+						    </td>
+						</tr>
+						<tr>
+							<th COLSPAN = '5'> DOCUEMNTACAO EXEGIDA (ANEXOS)   </th>
+						</tr>
+						<tr >
+						    <td COLSPAN = '5'>a - Atestado Medico</td>
+						</tr>
+						<tr >
+						    <td COLSPAN = '5'>b - Copia da CTPS - Identificacao e Contrato</td>
+						</tr>
+						<tr>
+						    <td COLSPAN = '5'>c - Declaraçao de Tranferencia</td>
+						</tr>
+						<tr>
+						    <td COLSPAN = '5'>d - Declaraçao da Empresa com o respectivo horário</td>
+						</tr>
+						<tr >
+						    <td COLSPAN = '5'>e - Guia de Trabferência</td>
+						</tr>
+						<tr >
+						    <td COLSPAN = '5'>f - Histórico Escolar de Ensino Fundamental(Original)</td>
+						</tr>
+						<tr>
+						    <td COLSPAN = '5'>g - Histórico Escolar do Ensino Médio (Original)</td>
+						</tr>
+						<tr>
+						    <td COLSPAN = '5'>h - Histórico Escolar do Ensino Superior (Original)</td>
+						</tr>
+						<tr >
+						    <td COLSPAN = '5'>i - Ementas das Disciplinas</td>
+						</tr>
+						<tr >
+						    <td COLSPAN = '5'>j - Declaraçao de Unidade Militar</td>
+						</tr>
+					</thead>
+					<thead>
+					    <tr>
+							<th COLSPAN = '5' > INFORMAÇÕES ADICIONAIS   </th>
+    					</tr>
+    					<td COLSPAN = '5'>
+                            <textarea class="form-control" rows="5" id="comment"></textarea>
+                        </td>
+					</thead>
+					<thead>
+					    <tr>
+							<th COLSPAN = '5' > ANEXAR DOCUEMNTACAO EXEGIDA </th>
+    					</tr>
+					    <td COLSPAN = '5'>
+					        <script type="text/javascript" src="https://static.filestackapi.com/v3/filestack.js"></script>
+                            <script>
+                                var client = filestack.init('AMHru7JgISoaHTUzDCo1gz');
+                                function showPicker() {
+                                    client.pick({
+                                    }).then(function(result) {
+                                        console.log(JSON.stringify(result.filesUploaded))
+                                    });
+                                }
+                            </script>
+                            <input type="button" value="Upload" onclick="showPicker()" />
+					    </td>
+					</thead>
+					</table>
+					<input type="submit" value="Cadastrar"/>
+				</form>
+			</div>
+			</br></br>
+		</div>
+	</div>
+
+	<br/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+	<script src="js/bootstrap.js"></script>
+
+</body>
+</html>
+
+{% endblock %}
+
+
+{% block scripts %}
+{{ super() }}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+{% endblock %}
+
+
+
+
