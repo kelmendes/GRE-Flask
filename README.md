@@ -1,5 +1,3 @@
-<snippet>
-  <content><![CDATA[
 # GRE-Flask
 Sistema para solicitação e gerenciamento de requerimentos, utilizando Python e Flask.
 ## Installation
@@ -24,6 +22,3 @@ TODO: Write history
 TODO: Write credits
 ## License
 TODO: Write license
-]]></content>
-  <tabTrigger>readme</tabTrigger>
-</snippet>
