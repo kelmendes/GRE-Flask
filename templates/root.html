@@ -70,49 +70,20 @@
                             <li ><a href="{{ url_for('root')}}"> Administração</a></li>
                         {% endif %}
 
-                        <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            <span class="glyphicon glyphicon-user"></span> 
-                            <strong>{{session['login']}}</strong>
-                            <span class="glyphicon glyphicon-chevron-down"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <div class="navbar-login">
-                                    <div class="row">
-                                        <div class="col-lg-4">
-                                            <p class="text-center">
-                                                <span class="glyphicon glyphicon-user icon-size"></span>
-                                            </p>
-                                        </div>
-                                        <div class="col-lg-8">
-                                            <p class="text-left"><strong>{{session['nome']}}</strong></p>
-                                            <p class="text-left small">{{session['email']}}</p>
-                                            <p class="text-left">
-                                                <a href="#" class="btn btn-primary btn-block btn-sm">Atualizar Dados</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <div class="navbar-login navbar-login-session">
-                                    <div class="row">
-                                        <div class="col-lg-12">
-                                            <p>
-                                                <a href="{{ url_for('logout')}}" class="btn btn-danger btn-block">Sair</a>
-                                            </p>
-                                        </div>
-                                    </div>
-                                </div>
+                       <ul class="nav navbar-nav navbar-right">
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-user"></span>&nbsp;
+                                    {{session['login']}}
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="#">Perfil</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{{ url_for('logout')}}">Sair</a></li>
+                                </ul>
                             </li>
                         </ul>
-
-
-
-
                     </ul>
                 </div>
         </div>

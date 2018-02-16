@@ -58,47 +58,22 @@
                         {% if session['root'] == 'SIM' %}
                         <li><a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;root&#39;)%7D%7D"> Administração</a></li>
                         {% endif %}
+                        
                         <ul class="nav navbar-nav navbar-right">
                             <li class="dropdown">
-                                <a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/editar.html#" class="dropdown-toggle" data-toggle="dropdown">
-                                <span class="glyphicon glyphicon-user"></span>&nbsp;
-                                <strong>{{session['login']}}</strong>
-                                <span class="glyphicon glyphicon-chevron-down"></span>
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <span class="glyphicon glyphicon-user"></span>&nbsp;
+                                    {{session['login']}}
+                                    <span class="caret"></span>
                                 </a>
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <div class="navbar-login">
-                                            <div class="row">
-                                                <div class="col-lg-4">
-                                                    <p class="text-center">
-                                                        <span class="glyphicon glyphicon-user icon-size"></span>
-                                                    </p>
-                                                </div>
-                                                <div class="col-lg-8">
-                                                    <p class="text-left"><strong>{{session['login']}}</strong></p>
-                                                    <p class="text-left small">{{session['email']}}</p>
-                                                    <p class="text-left">
-                                                        <a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/editar.html#" class="btn btn-primary btn-block btn-sm">Atualizar Dados</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
-                                    <li class="divider"></li>
-                                    <li>
-                                        <div class="navbar-login navbar-login-session">
-                                            <div class="row">
-                                                <div class="col-lg-12">
-                                                    <p>
-                                                        <a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;logout&#39;)%7D%7D" class="btn btn-danger btn-block">Sair</a>
-                                                    </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </li>
+                                    <li><a href="#">Perfil</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="{{ url_for('logout')}}">Sair</a></li>
                                 </ul>
                             </li>
                         </ul>
+                        
                     </ul>
                 </div>
             </div>
