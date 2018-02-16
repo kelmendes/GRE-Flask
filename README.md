@@ -1,9 +1,15 @@
 <snippet>
   <content><![CDATA[
-# ${1:GRE-Flask}
-TODO: Sistema para solicitação e gerenciamento de requerimentos, utilizando Python e Flask.
+# GRE-Flask
+Sistema para solicitação e gerenciamento de requerimentos, utilizando Python e Flask.
 ## Installation
-TODO: Describe the installation process
+Bibliotecas necessárias
+1 - Flask 
+2 - Flask Bootstraps
+3 - Flask Admin
+3 - Flask Login
+5 - Flask SAQLAlchemy
+6 - SAQLAlchemy
 ## Usage
 TODO: Write usage instructions
 ## Contributing
