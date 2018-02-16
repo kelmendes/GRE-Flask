@@ -117,20 +117,10 @@ def request_loader(request):
     return user
 
 users = {
-    'MELQUE':
-        {'pw': 'melque',
-        'email':'melquesedeque-santos@gmail.com',
-        'nome':'Melquesedeque Mauricio',
-        'root':'NAO'},
-    '20162TRPM0300':
-        {'pw': 'klebson',
-        'email':'klebsonmendes@gmail.com',
-        'nome':'Klebson Mendes',
-        'root':'NAO'},
     'TESTE':
-        {'pw':'teste',
-        'email':'emaildetestes@gmail.com',
-        'nome':'Teste Nome',
+        {'pw': 'teste',
+        'email':'teste@email.com',
+        'nome':'teste Nome',
         'root':'NAO'},
     'ADMIN':
         {'pw':'admin',
@@ -300,5 +290,5 @@ def editar(id):
 
     return render_template('editar.html', requerimento=pessoa)
 
-#if __name__ == "__main__":
-#    app.run(debug=True)#, host='10.36.70.182')
+if __name__ == "__main__":
+    app.run(debug=True)#, host='10.36.70.182')
