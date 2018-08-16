@@ -1,204 +1,158 @@
-<!-- saved from url=(0103)https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/editar.html -->
-<html xmlns="http://www.w3.org/1999/xhtml">
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    </head>
-    <body>
-        {%  extends  "bootstrap/base.html"  %}
-        {% block content %}
-        <!-- COR Barra Mobile -->
-        <!-- Chrome, Firefox OS, Opera and Vivaldi -->
-        <meta name="theme-color" content="#000000">
-        <!-- Windows Phone -->
-        <meta name="msapplication-navbutton-color" content="#000000">
-        <!-- iOS Safari -->
-        <meta name="apple-mobile-web-app-status-bar-style" content="#000000">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="./So LGP_files/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="./So LGP_files/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="./So LGP_files/bootstrap.min.js.download" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-        <title>So LGP</title>
-        <style>
-            .navbar-login
-            {
-            width: 305px;
-            padding: 10px;
-            padding-bottom: 0px;
-            }
-            .navbar-login-session
-            {
-            padding: 10px;
-            padding-bottom: 0px;
-            padding-top: 0px;
-            }
-            .icon-size
-            {
-            font-size: 87px;
-            }
-        </style>
-        <!-- Menu -->
-        <div class="navbar navbar-inverse navbar-static-top">
-            <div class="container">
-                <a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/editar.html#" class="navbar-brand"> Home</a>
-                <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                </button>
-                <div class="collapse navbar-collapse navHeaderCollapse">
+{% extends "bootstrap/base.html" %}
+{% block title %}So LGP{% endblock %}
+
+{% block navbar %}
+    <div class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/editar.html#" class="navbar-brand"> Home</a>
+            <button class="navbar-toggle" data-toggle="collapse" data-target=".navHeaderCollapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            </button>
+            <div class="collapse navbar-collapse navHeaderCollapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;index&#39;)%7D%7D"> Home</a></li>
+                    {% if session['root'] == 'NAO' %}
+                    <li><a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;cadastrar&#39;)%7D%7D"> Formulario</a></li>
+                    <li><a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;lista&#39;)%7D%7D"> Solicitações</a></li>
+                    {% endif %}
+                    {% if session['root'] == 'SIM' %}
+                    <li><a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;root&#39;)%7D%7D"> Administração</a></li>
+                    {% endif %}
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;index&#39;)%7D%7D"> Home</a></li>
-                        {% if session['root'] == 'NAO' %}
-                        <li><a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;cadastrar&#39;)%7D%7D"> Formulario</a></li>
-                        <li><a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;lista&#39;)%7D%7D"> Solicitações</a></li>
-                        {% endif %}
-                        {% if session['root'] == 'SIM' %}
-                        <li><a href="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;root&#39;)%7D%7D"> Administração</a></li>
-                        {% endif %}
-                        
-                        <ul class="nav navbar-nav navbar-right">
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
-                                    <span class="glyphicon glyphicon-user"></span>&nbsp;
-                                    {{session['login']}}
-                                    <span class="caret"></span>
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li><a href="#">Perfil</a></li>
-                                    <li role="separator" class="divider"></li>
-                                    <li><a href="{{ url_for('logout')}}">Sair</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                        
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <span class="glyphicon glyphicon-user"></span>&nbsp;
+                            {{session['login']}}
+                            <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a href="#">Perfil</a></li>
+                                <li role="separator" class="divider"></li>
+                                <li><a href="{{ url_for('logout')}}">Sair</a></li>
+                            </ul>
+                        </li>
                     </ul>
-                </div>
+                </ul>
             </div>
         </div>
-        <div class="container">
-            <div class="jumbotron jumbotron-fluid col-md-15">
-                <h1>Requerimento Id:{{requerimento._id}} </h1>
-                <hr>
-                <div class="col-md-15 jumbotron jumbotron-fluid ">
+    </div>
+{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <div class="jumbotron jumbotron-fluid col-md-15">
+            <h1>Requerimento Id:{{requerimento._id}} </h1>
+            <hr>
+            <div class="col-md-15 jumbotron jumbotron-fluid ">
+                <table class="table">
+                    <thead class="thead-default">
+                        <tr>
+                            <th> CAMPUS </th>
+                            <th colspan="2"> NOME DO(A) ALUNO(A) </th>
+                            <th> Nº DE MATRICULA </th>
+                            <th> E-mail 	</th>
+                        </tr>
+                        <tr>
+                            <td> {{requerimento.campus}} </td>
+                            <td> {{requerimento.nome}} </td>
+                            <td> {{ requerimento.matricula }}</td>
+                            <td> {{ requerimento.email }}</td>
+                        </tr>
+                    </thead>
+                    <thead class="thead-default">
+                        <tr>
+                            <th> PERIODO *</th>
+                            <th colspan="2"> CURSO *</th>
+                            <th> TURNO *</th>
+                            <th> ENDERECO / TELEFONE *</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{requerimento.periodo}}  </td>
+                            <td colspan="2">{{requerimento.curso}} </td>
+                            <td> {{requerimento.turno}} </td>
+                            <td> {{requerimento.telefone}}  </td>
+                        </tr>
+                    </tbody>
+                    <thead class="thead-default">
+                        <tr>
+                            <th colspan="2"> CPF * </th>
+                            <th> IDENTIDADE * </th>
+                            <th>ORGAO EXPED. *</th>
+                            <th> ESTADO *</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="2">{{requerimento.cpf}}</td>
+                            <td>{{requerimento.identidade}}</td>
+                            <td>{{requerimento.orgaoexpedidor}}</td>
+                            <td>{{requerimento.estadomunucipio}}</td>
+                        </tr>
+                    </tbody>
+                    <thead class="thead-default">
+                        <tr>
+                            <th colspan="5"> MARQUE A OPCAO DESEJADA   </th>
+                        </tr>
+                        <tr>
+                            <td colspan="5">  {{requerimento.iten}}  </td>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th colspan="5"> INFORMAÇÕES ADICIONAIS   </th>
+                        </tr>
+                        <tr>
+                            <td colspan="5">
+                                <textarea class="form-control" rows="5" id="comment"></textarea>
+                            </td>
+                        </tr>
+                    </thead>
+                    <thead>
+                        <tr>
+                            <th colspan="5"> ANEXAR DOCUEMNTACAO EXEGIDA </th>
+                        </tr>
+                        <tr>
+                            <td colspan="5"> Nenhum Anexo!   </td>
+                        </tr>
+                    </thead>
+                </table>
+                <form action="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;cadastro&#39;)%7D%7D" method="POST">
                     <table class="table">
-                        <thead class="thead-default">
-                            <tr>
-                                <th> CAMPUS </th>
-                                <th colspan="2"> NOME DO(A) ALUNO(A) </th>
-                                <th> Nº DE MATRICULA </th>
-                                <th> E-mail 	</th>
-                            </tr>
-                            <tr>
-                                <td> {{requerimento.campus}} </td>
-                                <td> {{requerimento.nome}} </td>
-                                <td> {{ requerimento.matricula }}</td>
-                                <td> {{ requerimento.email }}</td>
-                            </tr>
-                        </thead>
-                        <thead class="thead-default">
-                            <tr>
-                                <th> PERIODO *</th>
-                                <th colspan="2"> CURSO *</th>
-                                <th> TURNO *</th>
-                                <th> ENDERECO / TELEFONE *</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>{{requerimento.periodo}}  </td>
-                                <td colspan="2">{{requerimento.curso}} </td>
-                                <td> {{requerimento.turno}} </td>
-                                <td> {{requerimento.telefone}}  </td>
-                            </tr>
-                        </tbody>
-                        <thead class="thead-default">
-                            <tr>
-                                <th colspan="2"> CPF * </th>
-                                <th> IDENTIDADE * </th>
-                                <th>ORGAO EXPED. *</th>
-                                <th> ESTADO *</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td colspan="2">{{requerimento.cpf}}</td>
-                                <td>{{requerimento.identidade}}</td>
-                                <td>{{requerimento.orgaoexpedidor}}</td>
-                                <td>{{requerimento.estadomunucipio}}</td>
-                            </tr>
-                        </tbody>
-                        <thead class="thead-default">
-                            <tr>
-                                <th colspan="5"> MARQUE A OPCAO DESEJADA   </th>
-                            </tr>
-                            <tr>
-                                <td colspan="5">  {{requerimento.iten}}  </td>
-                            </tr>
-                        </thead>
                         <thead>
                             <tr>
-                                <th colspan="5"> INFORMAÇÕES ADICIONAIS   </th>
+                                <th colspan="5"> Observações - Homologação  </th>
                             </tr>
                             <tr>
                                 <td colspan="5">
-                                    <textarea class="form-control" rows="5" id="comment"></textarea>
+                                    <textarea class="form-control" rows="5" id="obs-homologacao"></textarea>
                                 </td>
                             </tr>
                         </thead>
                         <thead>
                             <tr>
-                                <th colspan="5"> ANEXAR DOCUEMNTACAO EXEGIDA </th>
+                                <th colspan="5"> Estado Requerimento</th>
                             </tr>
                             <tr>
-                                <td colspan="5"> Nenhum Anexo!   </td>
+                                <td>
+                                    <select name="estado" class="form-control">
+                                        <option value="{{requerimento.estado}}">{{requerimento.estado.lower().capitalize()}}</option>
+                                        <option disabled=""> - - - - - - - - - - - - - </option>
+                                        <option value="EM ANDAMENTO">  Em Andamento  </option>
+                                        <option value="DEFERIDO">  Deferido  </option>
+                                        <option value="INDEFERIDO">  Indeferido  </option>
+                                    </select>
+                                </td>
                             </tr>
                         </thead>
                     </table>
-                    <form action="https://www.pythonanywhere.com/user/klebsonmendes/files/home/klebsonmendes/mysite/templates/%7B%7B%20url_for(&#39;cadastro&#39;)%7D%7D" method="POST">
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th colspan="5"> Observações - Homologação  </th>
-                                </tr>
-                                <tr>
-                                    <td colspan="5">
-                                        <textarea class="form-control" rows="5" id="obs-homologacao"></textarea>
-                                    </td>
-                                </tr>
-                            </thead>
-                            <thead>
-                                <tr>
-                                    <th colspan="5"> Estado Requerimento</th>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <select name="estado" class="form-control">
-                                            <option value="{{requerimento.estado}}">{{requerimento.estado.lower().capitalize()}}</option>
-                                            <option disabled=""> - - - - - - - - - - - - - </option>
-                                            <option value="EM ANDAMENTO">  Em Andamento  </option>
-                                            <option value="DEFERIDO">  Deferido  </option>
-                                            <option value="INDEFERIDO">  Indeferido  </option>
-                                        </select>
-                                    </td>
-                                </tr>
-                            </thead>
-                        </table>
-                        <input class="btn btn-success" type="submit" value="Concluir">
-                    </form>
-                </div>
-                <br><br>
+                    <input class="btn btn-success" type="submit" value="Concluir">
+                </form>
             </div>
+            <br><br>
         </div>
-        <br>
-        <script src="./So LGP_files/jquery.min.js.download"></script>
-        <script src="./So LGP_files/bootstrap.js.download"></script>
-        {% endblock %}
-        {% block scripts %}
-        {{ super() }}
-        <script src="./So LGP_files/jquery.min.js(1).download"></script>
-        {% endblock %}
-    </body>
-</html>
+    </div>
+{% endblock %}
