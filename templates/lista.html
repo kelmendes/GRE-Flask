@@ -43,38 +43,40 @@
 {% block content %}
   <div class="container">
      <h2>Solicitações</h2>
-     <table class="table">
-        <thead>
-           <tr>
-              <th>Identificação</th>
-              <th>Matricula</th>
-              <th>Nome</th>
-              <th>Inten Solicitado</th>
-              <th>Estado da Solicitação</th>
-              <th>Cancelar Requerimento</th>
-           </tr>
-        </thead>
-        {% for pessoa in pessoas %}
-            {% if  pessoa.estado =="DEFERIDO" %}
-                <tr class="success">
-            {% elif pessoa.estado =="INDEFERIDO" %}
-                <tr class="danger">
-            {% elif pessoa.estado =="CANCELADO PELO USUARIO" %}
-                <tr class="warning">
-            {% else %}
-                <tr class="active">
-            {% endif %}
-               <td>{{ pessoa._id}} </td>
-               <td>{{ pessoa.matricula}} </td>
-               <td>{{ pessoa.nome}} </td>
-               <td>{{ pessoa.iten}}</td>
-               <td>{{ pessoa.estado}}</td>
-               {% if pessoa.estado == 'EM ANDAMENTO' %}
-                    <td><a href='/cancelar/{{pessoa._id}}' class="btn btn-info active" type="button"> Cancelar Requerimento</a></td>
-               {% endif %}
-               <td COLSPAN = '2'></td>
-            </tr>
-        {% endfor %}
-     </table>
+     <div class="table-responsive">
+         <table class="table">
+            <thead>
+               <tr>
+                  <th>Identificação</th>
+                  <th>Matricula</th>
+                  <th>Nome</th>
+                  <th>Inten Solicitado</th>
+                  <th>Estado da Solicitação</th>
+                  <th>Cancelar Requerimento</th>
+               </tr>
+            </thead>
+            {% for pessoa in pessoas %}
+                  {% if  pessoa.estado =="DEFERIDO" %}
+                     <tr class="success">
+                  {% elif pessoa.estado =="INDEFERIDO" %}
+                     <tr class="danger">
+                  {% elif pessoa.estado =="CANCELADO PELO USUARIO" %}
+                     <tr class="warning">
+                  {% else %}
+                     <tr class="active">
+                  {% endif %}
+                     <td>{{ pessoa._id}} </td>
+                     <td>{{ pessoa.matricula}} </td>
+                     <td>{{ pessoa.nome}} </td>
+                     <td>{{ pessoa.iten}}</td>
+                     <td>{{ pessoa.estado}}</td>
+                     {% if pessoa.estado == 'EM ANDAMENTO' %}
+                        <td><a href='/cancelar/{{pessoa._id}}' class="btn btn-info active" type="button"> Cancelar Requerimento</a></td>
+                     {% endif %}
+                     <td COLSPAN = '2'></td>
+                  </tr>
+            {% endfor %}
+         </table>
+      </div>
 </div>
 {% endblock %}

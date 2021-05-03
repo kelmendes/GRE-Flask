@@ -39,62 +39,64 @@
 {% block content %}
   <div class="container">
      <h2>Solicitações</h2>
-     <table  class="table">
-        <thead>
-           <tr>
-              <th> Requerimentos</th>
-              <th>
-                 <a href="{{ url_for('filtroDef')}}">
-                 <button type="button" class="btn btn-sm btn-success"> Deferidos</button>
-                 </a>
-              </th>
-              <th>
-                 <a href="{{ url_for('filtroIndef')}}">
-                 <button type="button" class="btn btn-sm btn-danger"  > Indeferidos</button>
-                 </a>
-              </th>
-              <th>
-                 <a href="{{ url_for('filtroCalcell')}}">
-                 <button type="button" class="btn btn-sm btn-warning" > Cancelado Pelo Usuario</button>
-                 </a>
-              </th>
-              <th>
-                 <a href="{{ url_for('filtroOpen')}}">
-                 <button type="button" class="btn btn-sm btn-primary"  > Abertos</button>
-                 </a>
-              </th>
-              <th>
-                 <a href="{{ url_for('filtroAll')}}">
-                 <button type="button" class="btn btn-sm btn-default"  > Todos</button>
-                 </a>
-              </th>
-           </tr>
-           <tr>
-              <th>Identificação</th>
-              <th>Matricula</th>
-              <th>Nome</th>
-              <th>Inten Solicitado</th>
-              <th>Estado da Solicitação</th>
-           </tr>
-        </thead>
-        {% for pessoa in pessoas %}
-        {% if  pessoa.estado =="DEFERIDO" %}
-        <tr class="success">
-           {% elif pessoa.estado =="INDEFERIDO" %}
-        <tr class="danger">
-           {% elif pessoa.estado =="CANCELADO PELO USUARIO" %}
-        <tr class="warning">
-           {% else %}
-        <tr class="active">
-           {% endif %}
-           <td>{{ pessoa._id}} </td>
-           <td>{{ pessoa.matricula}} </td>
-           <td>{{ pessoa.nome}} </td>
-           <td>{{ pessoa.iten}}</td>
-           <td>{{ pessoa.estado}}</td>
-           <td COLSPAN = '2'> <a  href=" /editar/{{pessoa._id}}"> <button type="button" class="btn btn-sm btn-primary"> Editar </button></a> </td>
-        </tr>
-        {% endfor %}
-     </table>
+     <div class="table-responsive">
+         <table  class="table ">
+            <thead>
+               <tr>
+                  <th> Requerimentos</th>
+                  <th>
+                     <a href="{{ url_for('filtroDef')}}">
+                     <button type="button" class="btn btn-sm btn-success"> Deferidos</button>
+                     </a>
+                  </th>
+                  <th>
+                     <a href="{{ url_for('filtroIndef')}}">
+                     <button type="button" class="btn btn-sm btn-danger"  > Indeferidos</button>
+                     </a>
+                  </th>
+                  <th>
+                     <a href="{{ url_for('filtroCalcell')}}">
+                     <button type="button" class="btn btn-sm btn-warning" > Cancelado Pelo Usuario</button>
+                     </a>
+                  </th>
+                  <th>
+                     <a href="{{ url_for('filtroOpen')}}">
+                     <button type="button" class="btn btn-sm btn-primary"  > Abertos</button>
+                     </a>
+                  </th>
+                  <th>
+                     <a href="{{ url_for('filtroAll')}}">
+                     <button type="button" class="btn btn-sm btn-default"  > Todos</button>
+                     </a>
+                  </th>
+               </tr>
+               <tr>
+                  <th>Identificação</th>
+                  <th>Matricula</th>
+                  <th>Nome</th>
+                  <th>Inten Solicitado</th>
+                  <th>Estado da Solicitação</th>
+               </tr>
+            </thead>
+            {% for pessoa in pessoas %}
+            {% if  pessoa.estado =="DEFERIDO" %}
+            <tr class="success">
+               {% elif pessoa.estado =="INDEFERIDO" %}
+            <tr class="danger">
+               {% elif pessoa.estado =="CANCELADO PELO USUARIO" %}
+            <tr class="warning">
+               {% else %}
+            <tr class="active">
+               {% endif %}
+               <td>{{ pessoa._id}} </td>
+               <td>{{ pessoa.matricula}} </td>
+               <td>{{ pessoa.nome}} </td>
+               <td>{{ pessoa.iten}}</td>
+               <td>{{ pessoa.estado}}</td>
+               <td COLSPAN = '2'> <a  href=" /editar/{{pessoa._id}}"> <button type="button" class="btn btn-sm btn-primary"> Editar </button></a> </td>
+            </tr>
+            {% endfor %}
+         </table>
+     </div>
   </div>
 {% endblock %}
