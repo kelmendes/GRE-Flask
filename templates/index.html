@@ -28,6 +28,14 @@
 				<hr />
 				<div class="row">
 					<form class="form-signin" action='/' method='POST'>
+
+						{% if session['alert-warning-login'] == 'SIM' %}
+							<div class="alert alert-warning">
+									<strong>Aviso!</strong>Não foi possível encontrar sua Conta.
+							</div>
+					  	{% endif %}
+
+
 						<label for="inputEmail" class="sr-only">Email address</label>
 						<input type='text' name='email' id='email' placeholder='email' class="form-control"></input>
 					</br>

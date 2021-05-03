@@ -132,6 +132,7 @@ users = {
 @app.route('/', methods=['GET', 'POST'])
 def login():
     if flask.request.method == 'GET':
+        session['alert-warning-login'] = "NAO"
         return render_template('index.html')
     email_normal = flask.request.form['email']
     email = email_normal.upper()
@@ -146,8 +147,8 @@ def login():
         session['root'] = users[email]['root']
         return render_template('home.html', session=session)
     else:
-        return render_template('index2.html')
-    return render_template('index2.html')
+        session['alert-warning-login'] = "SIM"
+        return render_template('index.html')
 
 
 @app.route('/logout')
